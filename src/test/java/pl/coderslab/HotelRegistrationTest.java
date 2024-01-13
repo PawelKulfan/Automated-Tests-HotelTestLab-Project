@@ -96,7 +96,7 @@ public class HotelRegistrationTest {
     }
     //dodając test weryfikujący możliwość rezerwacji (dodanie do koszyka) dowolnego hotelu z listy.
     @Test
-    public void searchForHotel() {
+    public void searchForHotel() throws InterruptedException  {
         String email = "test13012024@test.pl";
         String password = "test13012024";
         String checkInDate = "01-03-2024";
@@ -125,11 +125,23 @@ public class HotelRegistrationTest {
         searchResultsPage.addHotelToCart();
         searchResultsPage.getProceedToCheckOut();
         try {
-            ProceedToCheckOutPage proceedToCheckOutPage = new ProceedToCheckOutPage(this.driver);
+            CartPage proceedToCheckOutPage = new CartPage(this.driver);
             assertTrue(proceedToCheckOutPage.paymentTypeIsVisible());
         } catch (NoSuchElementException ex) {
             fail("Cart is empty"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
         }
         //Dodaj do skryptu proces obsługi zamówienia w koszyku.
+        CartPage cartPage = new CartPage(this.driver);
+        cartPage.consentToTerms();
+        Thread.sleep(2000);//zatrzymuje działanie programu na określonąilość czasu
+        cartPage.selectPaymentMethod();
+        OrderSummaryPage orderSummaryPage = new OrderSummaryPage(this.driver);
+        orderSummaryPage.orderConfirmation();
+        try {
+            OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(this.driver);
+            assertTrue(orderConfirmationPage.orderConfirmed());
+        } catch (NoSuchElementException ex) {
+            fail("Order wasn't proceeded!"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
+        }
     }
 }
