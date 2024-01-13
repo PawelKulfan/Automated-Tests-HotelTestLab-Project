@@ -1,6 +1,5 @@
 package pl.coderslab;
 
-import org.checkerframework.checker.units.qual.N;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -124,11 +123,13 @@ public class HotelRegistrationTest {
         }
         SearchResultsPage searchResultsPage = new SearchResultsPage(this.driver);
         searchResultsPage.addHotelToCart();
+        searchResultsPage.getProceedToCheckOut();
         try {
-            SearchResultsPage hotelAddedToCart = new SearchResultsPage(this.driver);
-            assertEquals("Book Now", searchResultsPage.getHotelAddedToCartMessage()); // Sprawdzamy czy rzeczywiscie utworzylo nowego uzytkownika
+            ProceedToCheckOutPage proceedToCheckOutPage = new ProceedToCheckOutPage(this.driver);
+            assertTrue(proceedToCheckOutPage.paymentTypeIsVisible());
         } catch (NoSuchElementException ex) {
-            fail("Search failed!"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
+            fail("Cart is empty"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
         }
+        //Dodaj do skryptu proces obsługi zamówienia w koszyku.
     }
 }
