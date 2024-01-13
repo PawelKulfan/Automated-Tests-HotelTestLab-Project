@@ -1,5 +1,6 @@
 package pl.coderslab;
 
+import org.checkerframework.checker.units.qual.N;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,16 +9,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pl.coderslab.hotel.CreateAccount;
-import pl.coderslab.hotel.SignInPage;
-import pl.coderslab.hotel.MainPage;
-import pl.coderslab.hotel.MyAccountPage;
+import pl.coderslab.hotel.*;
 
 import java.time.Duration;
 import java.util.Random;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class HotelRegistrationTest {
 
@@ -98,8 +95,9 @@ public class HotelRegistrationTest {
             fail("Alert o sukcesie sie nie pojawil"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
         }
     }
+    //dodając test weryfikujący możliwość rezerwacji (dodanie do koszyka) dowolnego hotelu z listy.
     @Test
-    public void searchForHotel(){
+    public void searchForHotel() {
         String email = "test13012024@test.pl";
         String password = "test13012024";
         String checkInDate = "01-03-2024";
@@ -111,6 +109,26 @@ public class HotelRegistrationTest {
         MyAccountPage myAccountPage = new MyAccountPage(this.driver);
         myAccountPage.returnToMainPage();
         mainPage.searchHotel(checkInDate, checkOutDate);
-    }
+//        try {
+//            SearchResultsPage searchResultsPage = new SearchResultsPage(this.driver);
+//            assertEquals("Book Now", searchResultsPage.getSearchSuccesText()); // Sprawdzamy czy rzeczywiscie utworzylo nowego uzytkownika
+//        } catch (NoSuchElementException ex) {
+//            fail("Search failed!"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
+//        }
+        try {
+            SearchResultsPage searchResultsPage = new SearchResultsPage(this.driver);
+            assertTrue(searchResultsPage.getIsBookNowVisible());
+        } catch (NoSuchElementException ex) {
+            fail("Search failed!"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
 
+        }
+        SearchResultsPage searchResultsPage = new SearchResultsPage(this.driver);
+        searchResultsPage.addHotelToCart();
+        try {
+            SearchResultsPage hotelAddedToCart = new SearchResultsPage(this.driver);
+            assertEquals("Book Now", searchResultsPage.getHotelAddedToCartMessage()); // Sprawdzamy czy rzeczywiscie utworzylo nowego uzytkownika
+        } catch (NoSuchElementException ex) {
+            fail("Search failed!"); // Sami ustalamy, ze test nie przeszedl w tym wypadku
+        }
+    }
 }

@@ -18,4 +18,5 @@ public class MyAccountPage {
         WebElement backToMainPage = this.webDriver.findElement(By.xpath("//a[@title='MyBooking']"));
         backToMainPage.click();
     }
+
 }
