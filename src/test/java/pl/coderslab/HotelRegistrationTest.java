@@ -133,7 +133,7 @@ public class HotelRegistrationTest {
         //Dodaj do skryptu proces obsługi zamówienia w koszyku.
         CartPage cartPage = new CartPage(this.driver);
         cartPage.consentToTerms();
-        Thread.sleep(2000);//zatrzymuje działanie programu na określonąilość czasu
+        //Thread.sleep(2000);//zatrzymuje działanie programu na określonąilość czasu
         cartPage.selectPaymentMethod();
         OrderSummaryPage orderSummaryPage = new OrderSummaryPage(this.driver);
         orderSummaryPage.orderConfirmation();
