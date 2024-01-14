@@ -12,6 +12,8 @@ public class MyAccountPage {
     private WebElement message;
     @FindBy(xpath = "//a[@title='MyBooking']")
     private WebElement backToMainPage;
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/ul/li[1]/a")
+    private WebElement addFirstAddress;
 
     public MyAccountPage (WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
@@ -22,6 +24,9 @@ public class MyAccountPage {
     }
     public void returnToMainPage (){
         backToMainPage.click();
+    }
+    public void addFirstAddressPage () {
+        addFirstAddress.click();
     }
 
 }
