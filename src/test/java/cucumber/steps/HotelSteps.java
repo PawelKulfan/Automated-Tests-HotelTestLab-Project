@@ -1,5 +1,6 @@
-package pl.coderslab.cucumber.steps;
+package cucumber.steps;
 
+import hotel.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

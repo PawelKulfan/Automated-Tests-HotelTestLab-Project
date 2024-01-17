@@ -1,4 +1,4 @@
-package pl.coderslab.hotel;
+package hotel;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

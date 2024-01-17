@@ -1,4 +1,4 @@
-package pl.coderslab.cucumber.steps;
+package cucumber.steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

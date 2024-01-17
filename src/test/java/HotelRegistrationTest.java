@@ -1,5 +1,4 @@
-package pl.coderslab;
-
+import hotel.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pl.coderslab.hotel.*;
+import hotel.*;
 
 import java.time.Duration;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package pl.coderslab.cucumber;
+package cucumber;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
