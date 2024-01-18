@@ -9,14 +9,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pl.coderslab.hotel.*;
-
+//import pl.coderslab.hotel.*;
 import java.time.Duration;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
-public class HotelSteps {
+public class registerUserAndAddFirstAddress {
     private WebDriver webDriver;
     @Given("An open browser with user registration page")
     public void openBrowserWithHotelPage () {

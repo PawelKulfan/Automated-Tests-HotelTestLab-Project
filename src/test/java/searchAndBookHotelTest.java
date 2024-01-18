@@ -7,14 +7,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import hotel.*;
 
 import java.time.Duration;
 import java.util.Random;
 
 import static org.junit.Assert.*;
 
-public class HotelRegistrationTest {
+public class searchAndBookHotelTest {
 
     // Atrybut webdriver -> dzięki temu możemy wykorzystać go między metodami testowymi
     private WebDriver driver;
